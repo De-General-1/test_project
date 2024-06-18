@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const PORT = process.env.PORT
 export const connect = () =>{
-    mongoose.connect(process.env.MONGO_url, {
+    mongoose.connect(process.env.MONGO, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }).then(()=>{
@@ -51,12 +51,12 @@ app.get('/cartView', async (req,res) => {
     res.render('cartView', { products, categories, regions, title: 'Cart-View' })  
 })
 
-// app.get('/productDetails', async (req,res) => {
-//     const products=  await Product.find()
-//     const categories = await Category.find()
-//     const regions = await Region.find()
-//     res.render('productDetails', { products, categories, regions, title: 'Details' })  
-// })
+app.get('/productDetails', async (req,res) => {
+    const products=  await Product.find()
+    const categories = await Category.find()
+    const regions = await Region.find()
+    res.render('productDetails', { products, categories, regions, title: 'Details' })  
+})
 
 app.use('/categories', categoryRoutes);
 app.use('/regions', regionRoutes)

@@ -16,6 +16,28 @@ const fetchCartItems = () => {
     .catch(error => console.error('Error fetching cart items:', error));
 };
 
+//ADD to Cart
+const addToCart = (productId) => {
+    fetch('/api/cart', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ product_id: productId })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data.message);
+        alert(`Added 1 item to cart`);
+    })
+    .catch(error => console.error('Error adding to cart:', error));
+};
+
 const displayCartItems = (cartItems) => {
     const cartContainer = document.getElementById('cartItem');
     cartContainer.innerHTML = ''; // Clear previous cart items
@@ -23,7 +45,9 @@ const displayCartItems = (cartItems) => {
         const cartItemElement = document.createElement('div');
         cartItemElement.innerHTML = `
             <div class='cart-item' data-id="${item._id}">
-                            <h2>${item.product_id.name} Lorem ipsum dolor</h2>
+                            <img src="${item.product_id.image}" style="width:60px; height:60px; border-radius:"50%"/>
+                            <h2>${item.product_id.name}</h2>
+                            <h2>${item.product_id.description}</h2>
                             <input type="number" value="${item.quantity}" min="1" max="${item.product_id.stock}" class="cart-item-quantity" style="border: 1px solid gray; border-radius: 8px; padding: 0 3px; width: 5rem;"  /><button class="update-cart-item" style="display: inline-flex; padding: 1px 8px; background-color: green; color: white; border-radius: 8px;">Update</button>
                             <i class='delete-cart-item bx bx-trash' style="font-size: 28px; cursor:pointer"></i>
             </div>

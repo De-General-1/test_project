@@ -1,4 +1,6 @@
 import Product from "../Models/product.js";
+import Category from "../Models/category.js";
+import Region from "../Models/region.js";
 
 
 export const getAllProducts =  async (req, res, next)=>{
@@ -38,10 +40,12 @@ export const getProductsById =  async (req, res, next)=>{
         const productId = req.params.id
         const product = await Product.findById(productId)
         .populate('category_id');
+        const categories = await Category.find()
+        const regions = await Region.find()
         if (!product) {
             return res.status(404).json({ message: 'Product not found' });
         }
-        res.render('productDetails', { product, title: 'Product Details'});
+        res.render('productDetails', { product, categories, regions, title: 'Product Details'});
     } catch (err) {
         console.log(err)
         res.status(500).json({ message: err.message });

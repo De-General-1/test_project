@@ -25,6 +25,10 @@ const ProductSchema = new mongoose.Schema({
     region: {
         type: String,
         required: true
+    },
+    image: {
+        type: String,
+        required: true
     }
 },
 

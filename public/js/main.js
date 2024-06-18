@@ -22,10 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         productElement.innerHTML = `
                             <div>
                                 <div>
-                                    <img src="/img/images.jpeg" class="h-[8rem] w-[11rem] object-cover rounded-t-md">
+                                    <img src="${product.image}" class="h-[8rem] w-[11rem] object-cover rounded-t-md">
                                 </div>
                                 <div class="py-4 px-2">
-                                    <h1>${product.name}</h1>
+                                    <a href="/api/products/${product._id}">${product.name}</a>
                                     <h2 class="text-green-600">${product.price}</h2>
                                 </div>
                                 <button data-id="${product._id}" class="add-to-cart absolute right-3 cursor-pointer bg-white p-2 top-[52%] shadow-md rounded-[50%]" style="padding: 8px;">

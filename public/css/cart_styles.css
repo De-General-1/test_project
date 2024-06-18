@@ -33,7 +33,6 @@
     background-color: #eee;
     margin-left: 20px;
     padding: 15px;
-    text-align: center;
 }
 .head{
     background-color: #00b53f;
@@ -102,6 +101,7 @@
 .cart_button:hover{
     background-color: #333;
 }
+
 .cart-item{
     display: flex;
     align-items: center;

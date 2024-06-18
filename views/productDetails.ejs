@@ -20,7 +20,7 @@
                         <a href="#" class="text-white">Sign in</a>
                         <a class="text-white">|</a>
                         <a href="#" class="text-white">Registration</a>
-                        <a><button class="py-[6px] px-10 text-xm rounded bg-[#FEA03C] hover:bg-[#cf8331] text-white text-xl">SELL</button></a>
+                        <a href="/cartView"><button class="py-[6px] px-10 text-xm rounded bg-[#FEA03C] hover:bg-[#cf8331] text-white text-xl">Show Cart</button></a>
                     </div>
                 </nav>
             </div>
@@ -41,16 +41,18 @@
                 <div class="container">
                     <div class="sidebar">
                         <div class="head">Product Details</div>
-                        <div id="cartItem" style="display: flex; justify-content: flex-start;">
-                            <h1>Product Category</h1>
-                            <h1>Product Name</h1>
-                            <h1>Product description</h1>
-                            <h1>Product Price</h1>
-                            <h1>Product Region</h1>
+                        <div id="cartItem" style="">
+                            <img style="width:100px; height: 100px; margin-bottom: 20px;" src="<%= product.image %>"/>
+                            <h1 style="margin: 0 6px; ">Category: <span style="color: #999;"><%= product.category_id ? product.category_id.name : 'N/A' %></span></h1>
+                            <h1 style="margin: 0 6px;">Product Name: <span style="color: #999;"><%= product.name %></span></h1>
+                            <h1 style="margin: 0 6px;">Discription: <span style="color: #999;"> <%= product.description %></span></h1>
+                            <h1 style="margin: 0 6px;">Price:<span style="color: #999"><%= product.price %></span></h1>
+                            <h1 style="margin: 0 6px;">In Stock:<span style="color: #999"><%= product.stock %></span></h1>
+                            <button data-id="<%=  product._id %>" onclick="addToCart('<%= product._id %>')" class="add-to-cart cursor-pointer bg-white p-2 shadow-md" style="padding: 8px;">
+                                <i data-id="<%= product._id %>" onclick="addToCart('<%= product._id %>')" class='add-to-cart bx bx-bookmark hover:shadow-lg text-xl text-green-600'></i> Add to Cart
+                            </button>
                         </div>
                         <div class="foot">
-                            <h3>Total</h3>
-                            <h2 class="cart_h2" id="total">$ 0.00</h2>
                         </div>
                     </div>
                 </div>
@@ -59,7 +61,7 @@
         </section>    
 
     </div>
-
+    <script src="/js/addToCart.js"></script>
     <%- include('./partials/footer.ejs') %> 
 </body>
 </html>

@@ -521,14 +521,14 @@
                                     <div class="relative w-[11rem] rounded-md bg-white ">
                                         <div>
                                             <div>
-                                                <img src="/img/images.jpeg" class="h-[8rem] w-[11rem] object-cover rounded-t-md">
+                                                <img src="<%= product.image %>" class="h-[8rem] w-[11rem] object-cover rounded-t-md">
                                             </div>
                                             <div class=" py-4 px-2">
                                                 <h1><%= product.name %></h1>
                                                 <h2 class="text-green-600"><%= product.price %></h2>
                                             </div>
                                             <button data-id="<%= product._id %>" class="add-to-cart absolute right-3 bg-white p-2 top-[52%] shadow-md rounded-[50%]" style="padding: 8px;">
-                                                <i class='bx bx-bookmark hover:shadow-lg cursor-pointer text-xl text-green-600'></i>
+                                                <i class='add-to-cart bx bx-bookmark hover:shadow-lg cursor-pointer text-xl text-green-600'></i>
                                             </button>
                                             <div class="absolute left-0 top-0 text-center text-white w-[4rem] h-[1.8rem] bg-orange-400 rounded-br-xl rounded-tl-md">
                                                 <h1>Top</h1>
@@ -593,9 +593,9 @@
                                             <h1><%= product.name %></h1>
                                             <h2 class="text-green-600"><%= product.price %></h2>
                                         </div>
-                                        <div class="absolute right-3 bg-white p-2 top-[68%] shadow-md rounded-[50%]">
-                                            <i class='bx bx-bookmark hover:shadow-lg cursor-pointer text-xl text-green-600'></i>
-                                        </div>
+                                        <button data-id="<%= product.id %>" class="add-to-cart absolute right-3 bg-white p-2 top-[68%] shadow-md rounded-[50%]">
+                                            <i data-id="<%= product.id %>" class='add-to-cart bx bx-bookmark hover:shadow-lg cursor-pointer text-xl text-green-600'></i>
+                                        </button>
                                         <div class="absolute left-0 top-0 text-center text-white w-[4rem] h-[1.8rem] bg-orange-400 rounded-br-xl rounded-tl-md">
                                             <h1>Top</h1>
                                         </div>
