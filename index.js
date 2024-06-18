@@ -28,11 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const PORT = process.env.PORT
 export const connect = () =>{
-<<<<<<< HEAD
     mongoose.connect(process.env.MONGO_URL, {
-=======
-    mongoose.connect(process.env.MONGO_URL, {
->>>>>>> e3834320d9bb7309f58e8f87466678db6db93ffb
         useNewUrlParser: true,
         useUnifiedTopology: true
     }).then(()=>{
